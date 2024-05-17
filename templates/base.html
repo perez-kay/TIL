@@ -23,6 +23,7 @@
                     <nav class="vh-100 rounded-top-5 bg-white position-sticky top-0 start-0">
                         <ul class="nav flex-column">
                             <h1 class="text-center text-primary py-4 border-bottom border-2">TIL</h1>
+                            {# TODO: Add a Profile page for logged in users #}
                             <li class="nav-item">
                                 <a class="nav-link fs-4" href={% url 'feed:index' %}><i class="bx-fw bx bx-home"></i>Home</a>
                             </li>
@@ -30,6 +31,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link fs-4 js-toggle-modal" href={% url 'feed:new_post' %}><i class='bx bx-fw bx-message-square-add'></i>New Post</a>
                                 </li>
+                                {# TODO: Add a Settings page for logged in users #}
                                 <li class="nav-item">
                                     <a class="nav-link fs-4" href={% url 'account_logout' %}><i class="bx-fw bx bx-log-out"></i>Log Out</a>
                                 </li>
@@ -67,7 +69,6 @@
                                     aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            {# TODO: Add the ajax form #}
                             <textarea class="border rounded border-primary w-100 my-2 p-2"
                                       rows="3"
                                       placeholder="What did you learn today?"
