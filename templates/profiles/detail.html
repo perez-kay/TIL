@@ -21,7 +21,12 @@
                 <h1 class="card-title my-3">{{ user.username }}</h1>
                 {% if request.user.is_authenticated %}
                     {% if request.user != user %}
-                        <button type="button" data-username={{ user.username }} data-action="follow" data-url={% url 'profiles:follow' user.username %} class="js-follow btn mb-3 btn-lg btn-primary">Follow
+                        <button type="button" data-username={{ user.username }} data-action="{% if you_follow %}un{% endif %}follow" data-url={% url 'profiles:follow' user.username %} class="js-follow btn mb-3 btn-lg btn-primary">
+                            {% if you_follow %}
+                                Unfollow
+                            {% else %}
+                                Follow
+                            {% endif %}
                         </button>
                     {% endif %}
                 {% endif %}
