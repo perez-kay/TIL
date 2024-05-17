@@ -1,5 +1,8 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
+from followers.models import Follower
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 
@@ -8,7 +11,14 @@ class HomePageView(ListView):
 	model = Post
 	http_method_names = ['get']
 	context_object_name = 'posts'
-	queryset = Post.objects.all().order_by('-id')[0:30]
+
+	def get_queryset(self):
+		if self.request.user.is_authenticated:
+			following = list(Follower.objects.filter(followed_by=self.request.user).values_list('following', flat=True))
+			posts = Post.objects.filter(author__in=following).order_by('-id')[0:60]
+			return posts
+		else:
+			return Post.objects.all().order_by('-id')[0:30]
 
 class PostDetailView(DetailView):
 	template_name = "feed/detail.html"

@@ -6,6 +6,9 @@
     <div id="posts-container">
         {% for post in posts %}
             {% include "includes/post.html" with post=post show_detail_link=True %}
+        {% empty %}
+            Follow people to see posts!
+            {# TODO: show a few random user profiles as suggestions #}
         {% endfor %}
     </div>
 {% endblock body %}
