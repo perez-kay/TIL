@@ -1,0 +1,21 @@
+{% load thumbnail %}
+<div class="mb-4 p-4 bg-white rounded shadow-sm w-75">
+    <p class="text-secondary">{{ post.date|date:"F j, Y, g:i:a" }}</p>
+    <p class="mt-2 fs-5">{{ post.text }}</p>
+    {% if show_detail_link %}
+        <div class="mt-4 d-flex justify-content-between align-items-center">
+            <a class="text-primary text-decoration-none"
+               href="{% url 'feed:detail' post.id %}">Read More</a>
+        {% else %}
+            <div class="mt-4 d-flex justify-content-end align-items-center">
+            {% endif %}
+            {# TODO: Add User Profile Information #}
+            <a href="{% url 'profiles:detail' post.author.username %}"
+               class="d-flex align-items-end text-decoration-none text-secondary-emphasis">
+                {% thumbnail post.author.profile.image "40x40" crop="center" as im %}
+                    <img src={{ im.url }} alt="" class="rounded-circle mx-2">
+                {% endthumbnail %}
+                <h1 class="fs-5">{{ post.author.username }}</h1>
+            </a>
+        </div>
+    </div>
