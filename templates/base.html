@@ -23,7 +23,12 @@
                     <nav class="vh-100 rounded-top-5 bg-white position-sticky top-0 start-0">
                         <ul class="nav flex-column">
                             <h1 class="text-center text-primary py-4 border-bottom border-2">TIL</h1>
-                            {# TODO: Add a Profile page for logged in users #}
+                            {% if request.user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link fs-4"
+                                       href="{% url 'profiles:detail' request.user.username %}"><i class="bx-fw bx bx-user"></i>My Profile</a>
+                                </li>
+                            {% endif %}
                             <li class="nav-item">
                                 <a class="nav-link fs-4" href={% url 'feed:index' %}><i class="bx-fw bx bx-home"></i>Home</a>
                             </li>
