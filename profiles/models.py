@@ -10,7 +10,7 @@ class Profile(models.Model):
 		on_delete=models.CASCADE,
 		related_name='profile'
 	)
-	image = ImageField(upload_to='profiles', default='profiles/default/default.jpg')
+	image = ImageField(upload_to='profiles', default='profiles/default_pfp/default.jpg',null=False)
 
 	def __str__(self):
 		return self.user.username
