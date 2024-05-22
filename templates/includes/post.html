@@ -9,7 +9,6 @@
         {% else %}
             <div class="mt-4 d-flex justify-content-end align-items-center">
             {% endif %}
-            {# TODO: Add User Profile Information #}
             <a href="{% url 'profiles:detail' post.author.username %}"
                class="d-flex align-items-end text-decoration-none text-secondary-emphasis">
                 {% thumbnail post.author.profile.profile_picture "40x40" crop="center" as im %}
