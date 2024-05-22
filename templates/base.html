@@ -21,8 +21,11 @@
             <div class="row">
                 <div class="col-2">
                     <nav class="vh-100 rounded-top-5 bg-white position-sticky top-0 start-0">
-                        <ul class="nav flex-column">
-                            <h1 class="text-center text-primary py-4 border-bottom border-2">TIL</h1>
+                        <ul class="nav flex-column ">
+                            <h1 class="text-center text-primary pt-4 pb-2">TIL</h1>
+                            <h2 class="text-center text-secondary border-bottom border-2 pb-4 fs-6">
+                                What did you learn today?
+                            </h2>
                             {% if request.user.is_authenticated %}
                                 <li class="nav-item">
                                     <a class="nav-link fs-4"
