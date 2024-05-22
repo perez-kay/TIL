@@ -12,6 +12,7 @@ class Profile(models.Model):
 	)
 	profile_picture = ImageField(upload_to='profiles', default='profiles/default_pfp/default.jpg',null=False)
 	banner = ImageField(upload_to='banners', default='banners/default/default.jpg')
+	bio = models.CharField(default='', max_length=140)
 
 	def __str__(self):
 		return self.user.username
