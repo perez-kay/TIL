@@ -3,6 +3,7 @@ from django.views.generic import DetailView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from feed.models import Post
 from followers.models import Follower
+from.models import Profile
 from django.http import JsonResponse, HttpResponseBadRequest
 
 class ProfileDetailView(DetailView):
@@ -10,7 +11,7 @@ class ProfileDetailView(DetailView):
 	model = User
 	context_object_name = "user"
 	slug_field = "username"
-	slug_url_kwarg = "username" 
+	slug_url_kwarg = "username"
 
 	def get_context_data(self, **kwargs):
 		user = self.get_object()
@@ -18,6 +19,7 @@ class ProfileDetailView(DetailView):
 		context['total_posts'] = Post.objects.filter(author=user).count()
 		context['posts'] = Post.objects.filter(author=user)
 		context['num_followers'] = Follower.objects.filter(following=user).count()
+		context['num_following'] = Follower.objects.filter(followed_by=user).count()
 		if self.request.user.is_authenticated:
 			context['you_follow'] = Follower.objects.filter(following=user, followed_by=self.request.user).exists()
 		return context
