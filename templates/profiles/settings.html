@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}
+    My Profile - Settings
+{% endblock title %}
+{% block body %}
+    settings page for {{ request.user.username }}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {{ form.as_p }}
+        <button class="btn btn-primary btn-large">Update Profile</button>
+    </form>
+{% endblock body %}

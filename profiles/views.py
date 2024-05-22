@@ -1,9 +1,13 @@
+from typing import Any
 from django.contrib.auth.models import User
-from django.views.generic import DetailView, View
+from django.db.models.base import Model as Model
+from django.db.models.query import QuerySet
+from django.views.generic import DetailView, View, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from feed.models import Post
 from followers.models import Follower
 from.models import Profile
+from .forms import ProfileUpdateForm
 from django.http import JsonResponse, HttpResponseBadRequest
 
 class ProfileDetailView(DetailView):
@@ -23,6 +27,17 @@ class ProfileDetailView(DetailView):
 		if self.request.user.is_authenticated:
 			context['you_follow'] = Follower.objects.filter(following=user, followed_by=self.request.user).exists()
 		return context
+	
+class ProfileSettingsView(LoginRequiredMixin, UpdateView):
+	template_name = 'profiles/settings.html'
+	model = Profile
+	form_class = ProfileUpdateForm
+	context_object_name = 'profile'
+
+	
+	def get_object(self, queryset=None):
+		return Profile.objects.filter(user=self.request.user).first()
+	
 	
 class FollowView(LoginRequiredMixin, View):
 	http_method_names = ["post"]
