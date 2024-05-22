@@ -13,7 +13,7 @@
                      height="200px"
                      style="object-fit: cover">
                 <div class="d-flex justify-content-center position-absolute top-100 start-50 translate-middle">
-                    {% thumbnail user.profile.image "150x150" crop="center" as im %}
+                    {% thumbnail user.profile.profile_picture "150x150" crop="center" as im %}
                         <img src={{ im.url }} alt="" class="border border-5 border-white rounded-circle mx-2">
                     {% endthumbnail %}
                 </div>
