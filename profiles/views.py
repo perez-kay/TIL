@@ -1,4 +1,3 @@
-from typing import Any
 from django.contrib.auth.models import User
 from django.db.models.base import Model as Model
 from django.db.models.query import QuerySet
@@ -8,6 +7,7 @@ from feed.models import Post
 from followers.models import Follower
 from.models import Profile
 from .forms import ProfileUpdateForm
+from django.urls import reverse_lazy
 from django.http import JsonResponse, HttpResponseBadRequest
 
 class ProfileDetailView(DetailView):
@@ -33,10 +33,19 @@ class ProfileSettingsView(LoginRequiredMixin, UpdateView):
 	model = Profile
 	form_class = ProfileUpdateForm
 	context_object_name = 'profile'
-
+	success_url = reverse_lazy('profiles:settings')
 	
 	def get_object(self, queryset=None):
 		return Profile.objects.filter(user=self.request.user).first()
+	
+	def form_valid(self, form):
+		profile = form.save(commit=False)
+		user = profile.user
+		user.last_name = form.cleaned_data['last_name']
+		user.first_name = form.cleaned_data['first_name']
+		user.save()
+		profile.save()
+		return super().form_valid(form)
 	
 	
 class FollowView(LoginRequiredMixin, View):
