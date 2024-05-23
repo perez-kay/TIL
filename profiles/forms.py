@@ -1,4 +1,4 @@
-from django.forms import ModelForm, CharField, TextInput, Textarea
+from django.forms import ModelForm, CharField, TextInput, Textarea, FileInput
 from profiles.models import Profile
 
 class ProfileUpdateForm(ModelForm):
@@ -19,6 +19,14 @@ class ProfileUpdateForm(ModelForm):
 			'bio': Textarea(attrs={
 				'class': 'form-control',
 				'rows': '3',
+				'style': 'max-width: 500px;'
+			}),
+			'profile_picture': FileInput(attrs={
+				'class': 'form-control',
+				'style': 'max-width: 500px;'
+			}),
+			'banner': FileInput(attrs={
+				'class': 'form-control',
 				'style': 'max-width: 500px;'
 			})
 		}
