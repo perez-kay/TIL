@@ -9,6 +9,7 @@ from.models import Profile
 from .forms import ProfileUpdateForm
 from django.urls import reverse_lazy
 from django.http import JsonResponse, HttpResponseBadRequest
+from django.contrib.messages import success
 
 class ProfileDetailView(DetailView):
 	template_name = "profiles/detail.html"
@@ -45,6 +46,7 @@ class ProfileSettingsView(LoginRequiredMixin, UpdateView):
 		user.first_name = form.cleaned_data['first_name']
 		user.save()
 		profile.save()
+		success(self.request, "Profile Updated Successfully!")
 		return super().form_valid(form)
 	
 	
