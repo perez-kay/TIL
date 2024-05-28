@@ -11,6 +11,7 @@ class HomePageView(ListView):
 	model = Post
 	http_method_names = ['get']
 	context_object_name = 'posts'
+	queryset = Post.objects.all().order_by('-id')
 
 	def get_queryset(self):
 		if self.request.user.is_authenticated:
@@ -18,7 +19,7 @@ class HomePageView(ListView):
 			posts = Post.objects.filter(author__in=following).order_by('-id')[0:60]
 			return posts
 		else:
-			return Post.objects.all().order_by('-id')[0:30]
+			return self.queryset
 
 class PostDetailView(DetailView):
 	template_name = "feed/detail.html"

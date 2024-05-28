@@ -8,12 +8,9 @@
         <div class="card shadow-sm border-0 mb-3 w-75 h-100">
             <div class="position-relative">
                 {# TODO: Add a Banner section to Profile so users can change it #}
-                <img src="https://images.unsplash.com/photo-1715586042534-4534fad6863d?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                     class="card-img-top"
-                     height="200px"
-                     style="object-fit: cover">
+                <img src={{ user.profile.banner.url }} class="card-img-top" height="200px" style="object-fit: cover">
                 <div class="d-flex justify-content-center position-absolute top-100 start-50 translate-middle">
-                    {% thumbnail user.profile.image "150x150" crop="center" as im %}
+                    {% thumbnail user.profile.profile_picture "150x150" crop="center" as im %}
                         <img src={{ im.url }} alt="" class="border border-5 border-white rounded-circle mx-2">
                     {% endthumbnail %}
                 </div>
@@ -32,17 +29,21 @@
                     {% endif %}
                 {% endif %}
                 {# TODO: Add a Bio section to the profile #}
-                <p class="card-text"></p>
-                <div class="d-flex justify-content-center">
-                    <div class="d-flex flex-column justify-content-center align-items-center mx-3">
-                        <h2>{{ total_posts }}</h2>
-                        <p>Posts</p>
-                    </div>
-                    <span>&nbsp;</span>
-                    <div class="d-flex flex-column justify-content-center align-items-center mx-3">
-                        {# TODO: Add the number of followers this person has #}
-                        <h2>XX</h2>
-                        <p>Followers</p>
+                <p class="card-text">{{ user.profile.bio }}</p>
+                <div class="">
+                    <div class="row">
+                        <div class="col-sm-4 text-center">
+                            <h2>{{ total_posts }}</h2>
+                            <p>Posts</p>
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <h2>{{ num_followers }}</h2>
+                            <p>Followers</p>
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <h2>{{ num_following }}</h2>
+                            <p>Following</p>
+                        </div>
                     </div>
                 </div>
             </div>
