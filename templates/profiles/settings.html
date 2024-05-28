@@ -4,21 +4,20 @@
     My Profile - Settings
 {% endblock title %}
 {% block body %}
-    <div class="container">
+    <div class="container mt-2">
         <div class="row">
-            <div class="col-6">
-                <h1>Current Profile Picture</h1>
-                {% thumbnail user.profile.profile_picture "150x150" crop="center" as im %}
-                    <img src={{ im.url }} alt="" class="">
-                {% endthumbnail %}
-                <h1>Current Banner</h1>
-                <img src={{ user.profile.banner.url }} alt="" class="" width="300">
+            <div class="col-lg-6">
+                {% include "includes/profile.html" with show_user_stats=False %}
             </div>
-            <div class="col-6">
+            <div class="col-lg-6">
                 <form action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <button class="btn btn-primary btn-large">Update Profile</button>
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body">
+                            {{ form.as_p }}
+                            <button class="btn btn-primary btn-large">Update Profile</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
