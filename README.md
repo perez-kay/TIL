@@ -15,7 +15,7 @@ Users can create an account, edit their profile, follow and unfollow other users
 - HTML
 
 ## Screenshots
-## Desktop
+### Desktop
 Current User's Profile
 ![Current User's Profile](./screenshots/profile.png "Current User's Profile")
 Homepage
