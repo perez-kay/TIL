@@ -15,10 +15,15 @@ Users can create an account, edit their profile, follow and unfollow other users
 - HTML
 
 ## Screenshots
+## Desktop
+Current User's Profile
+![Current User's Profile](./screenshots/profile.png "Current User's Profile")
+Homepage
+![Homepage](./screenshots/homepage.png 'Homepage')
+User's Profile Settings
+![User Profile Settings](./screenshots/settings.png 'User Profile Settings')
+Other User's Profile
+![Other User's Profile](./screenshots/other%20user%20profile.png "Other User's Profile")
 
-|                                         Desktop                                          |                                           Mobile                                           |
-| :--------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
-|      ![Current User's Profile](./screenshots/profile.png "Current User's Profile")       |    ![Current User's Profile](./screenshots/profile_mobile.jpg "Current User's Profile")    |
-|                    ![Homepage](./screenshots/homepage.png 'Homepage')                    |                ![Homepage](./screenshots/homepage%20mobile.jpg 'Homepage')                 |
-|       ![User Profile Settings](./screenshots/settings.png 'User Profile Settings')       |   ![User Profile Settings](./screenshots/settings%20mobile.jpg 'User Profile Settings')    |
-| ![Other User's Profile](./screenshots/other%20user%20profile.png "Other User's Profile") | ![Other User's Profile](./screenshots/other%20profile%20mobile.jpg "Other User's Profile") |
+### Mobile
+<img src="screenshots/profile_mobile.jpg" height="500" title="Current User's Profile"> <img src="screenshots/homepage mobile.jpg" height="500"> <img src="screenshots/settings mobile.jpg" height="500"> <img src="screenshots/other profile mobile.jpg" height="500"> 
