@@ -3,7 +3,7 @@
     Homepage
 {% endblock title %}
 {% block body %}
-    <div id="posts-container">
+    <div id="posts-container" class="d-flex flex-column align-items-center">
         {% for post in posts %}
             {% include "includes/post.html" with post=post show_detail_link=True %}
         {% empty %}

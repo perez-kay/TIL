@@ -17,10 +17,65 @@
               rel='stylesheet'>
     </head>
     <body>
-        <div class="bg-light ">
+        <div class="bg-light">
             <div class="row">
-                <div class="col-2">
-                    <nav class="vh-100 rounded-top-5 bg-white position-sticky top-0 start-0">
+                <div class="col-xxl-2 col-md-3">
+                    <nav class="d-md-none navbar navbar-expand-md bg-body-tertiary fixed-top">
+                        <div class="container-fluid">
+                            <a class="navbar-brand text-primary fw-bold" href="#">Today I Learned</a>
+                            <button class="navbar-toggler"
+                                    type="button"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasNavbar"
+                                    aria-controls="offcanvasNavbar"
+                                    aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="offcanvas offcanvas-start"
+                                 tabindex="-1"
+                                 id="offcanvasNavbar"
+                                 aria-labelledby="offcanvasNavbarLabel">
+                                <div class="offcanvas-header">
+                                    <h1 class="offcanvas-title text-primary" id="offcanvasNavbarLabel">
+                                        Today I Learned
+                                    </h1>
+                                    <button type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="offcanvas"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body">
+                                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                        {% if request.user.is_authenticated %}
+                                            <li class="nav-item">
+                                                <a class="nav-link fs-4"
+                                                   href="{% url 'profiles:detail' request.user.username %}"><i class="bx-fw bx bx-user"></i>My Profile</a>
+                                            </li>
+                                        {% endif %}
+                                        <li class="nav-item">
+                                            <a class="nav-link fs-4" href={% url 'feed:index' %}><i class="bx-fw bx bx-home"></i>Home</a>
+                                        </li>
+                                        {% if request.user.is_authenticated %}
+                                            <li class="nav-item">
+                                                <a class="nav-link fs-4 js-toggle-modal" href={% url 'feed:new_post' %}><i class='bx bx-fw bx-message-square-add'></i>New Post</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link fs-4" href="{% url 'profiles:settings' %}"><i class='bx bx-fw bx-cog'></i>Settings</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link fs-4" href={% url 'account_logout' %}><i class="bx-fw bx bx-log-out"></i>Log Out</a>
+                                            </li>
+                                        {% else %}
+                                            <li class="nav-item">
+                                                <a class="nav-link fs-4" href={% url 'account_login' %}><i class="bx-fw bx bx-log-in"></i>Log In</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <nav class="d-none d-md-block vh-100 rounded-top-5 bg-white position-sticky top-0 start-0">
                         <ul class="nav flex-column ">
                             <h1 class="text-center text-primary pt-4 pb-2">TIL</h1>
                             <h2 class="text-center text-secondary border-bottom border-2 pb-4 fs-6">
@@ -53,7 +108,7 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col m-5 pt-3">
+                <div class="col-xl-9 col-md-8 mt-5">
                     {% if messages %}
                         {% for message in messages %}
                             <div class="alert alert-{% if message.tags %}{{ message.tags }}{% else %}primary{% endif %} alert-dismissible fade show px-3 mx-5 mt-3"

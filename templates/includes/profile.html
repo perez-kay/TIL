@@ -1,0 +1,44 @@
+{% load thumbnail %}
+<div class="card shadow-sm border-0 mb-3 w-100 h-100">
+    <div class="position-relative">
+        {# TODO: Add a Banner section to Profile so users can change it #}
+        <img src={{ user.profile.banner.url }} class="card-img-top" height="200px" style="object-fit: cover">
+        <div class="d-flex justify-content-center position-absolute top-100 start-50 translate-middle">
+            {% thumbnail user.profile.profile_picture "150x150" crop="center" as im %}
+                <img src={{ im.url }} alt="" class="border border-5 border-white rounded-circle mx-2">
+            {% endthumbnail %}
+        </div>
+    </div>
+    <div class="card-body text-center mt-5">
+        <h1 class="card-title mt-3">{{ user.first_name }} {{ user.last_name }}</h1>
+        <h2 class="text-secondary fs-5 mb-3">@{{ user.username }}</h2>
+        {% if request.user.is_authenticated %}
+            {% if request.user != user %}
+                <button type="button" data-username={{ user.username }} data-action="{% if you_follow %}un{% endif %}follow" data-url={% url 'profiles:follow' user.username %} class="js-follow btn mb-3 btn-lg btn-primary">
+                    {% if you_follow %}
+                        Unfollow
+                    {% else %}
+                        Follow
+                    {% endif %}
+                </button>
+            {% endif %}
+        {% endif %}
+        <p class="card-text">{{ user.profile.bio }}</p>
+        {% if show_user_stats %}
+            <div class="row">
+                <div class="col-4 text-center">
+                    <h2>{{ total_posts }}</h2>
+                    <p>Posts</p>
+                </div>
+                <div class="col-4 text-center">
+                    <h2>{{ num_followers }}</h2>
+                    <p>Followers</p>
+                </div>
+                <div class="col-4 text-center">
+                    <h2>{{ num_following }}</h2>
+                    <p>Following</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
