@@ -16,10 +16,6 @@ Users can create an account, edit their profile, follow and unfollow other users
 
 ## Screenshots
 
-### Current User's Profile
-
-Desktop
-![](./screenshots/profile.png)
-Mobile
-<br>
-<img src="screenshots/profile_mobile.jpg" width="200">
+|            Desktop             |                Mobile                 |
+| :----------------------------: | :-----------------------------------: |
+| ![](./screenshots/profile.png) | ![](./screenshots/profile_mobile.jpg) |
