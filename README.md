@@ -2,7 +2,7 @@
 
 ### _What did you learn today?_
 
-A small, responsive social media style site for sharing fun facts that you learned during the day.
+A responsive social media style site for sharing fun facts that you learned during the day.
 
 Users can create an account, edit their profile, follow and unfollow other users, and most importantly: post their fun facts.
 
