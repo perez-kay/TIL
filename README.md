@@ -6,6 +6,8 @@ A responsive social media style site for sharing fun facts that you learned duri
 
 Users can create an account, edit their profile, follow and unfollow other users, and most importantly: post their fun facts.
 
+The backend was done as part of the the "Ultimate 2024 Fullstack Web Developer Bootcamp" via Udemy. The frontend was entirely custom built.
+
 ## Built with:
 
 - Django 5.0.4
